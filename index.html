@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="remark/styles.css" />
+    </head>
+    <body>
+        <textarea id="source" style="display: none;">
+
+name: title
+layout: true
+class: center, middle, inverse
+---
+name: leftmenu
+layout: true
+---
+name: normal
+layout: true
+---
+
+template: title
+# remark-slides
+(very creative name)
+
+### [remark](https://github.com/gnab/remark) distribution by [@tongong](https://github.com/tongong)
+
+---
+template: normal
+# get started
+
+1. clone the repo (or download as archive from github)
+   ```
+   git clone https://github.com/tongong/remark-slides.git
+   ```
+
+2. Put the `remark` folder where you want to make your presentation.
+
+3. Start with a new markdown file and compile it to HTML with the compile
+   script or copy the `template.html` outside the remark folder and start
+   modifying it.
+
+4. Use the following slides as documentation.
+
+---
+template: title
+## markdown
+(see [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet))
+
+---
+template: normal
+
+## headings
+```
+# biggest heading
+## not so big
+### only a little big
+#### smaller
+##### smaller-smaller
+###### smol
+```
+
+## inline formatting
+```
+This is **bold**, this *italicized*, this ~~struck through~~ and this `inline code`.
+```
+
+## quotes
+```
+> Quotation is the repetition or copy of someone else's statement or thoughts.
+> Quotation marks are punctuation marks used in text to indicate a quotation.
+> Both of these words are sometimes abbreviated as "quote(s)".
+> .author[~ Wikipedia]
+```
+(The `author` class does not belong to the markdown specification.)
+
+---
+template: normal
+
+## links & images
+```
+[link text](https://www.example.com)
+OR https://www.example.com
+OR <https://www.example.com>
+OR bla bla [remark] bla [something else][remark]
+
+![alt text](image.jpg)
+OR ![alt text][logo]
+
+[remark]: https://remarkjs.com
+[logo]: ./example.png
+```
+
+## lists
+```
+1. first item
+
+2. second item
+
+   also belongs to second item
+
+3. third item
+   - unordered sublist
+     - third level
+   - next item
+```
+
+---
+template: normal
+
+## tables
+```
+| Syntax    | Description |
+| ---------:| ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+```
+
+see [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables)
+for more.
+## code blocks
+```
+`` ` (<- without the space)
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+`` ` (<- without the space)
+```
+
+---
+template: title
+## remarkjs
+(see [documentation](https://github.com/gnab/remark/wiki))
+
+---
+template: normal
+
+## slide separators
+```
+# Slide 1
+This is slide 1
+---
+# Slide 2
+This is slide 2
+```
+For incremental content you can also use `--` but this does not work
+everywhere.
+
+There are also
+[notes](https://github.com/gnab/remark/wiki/Markdown#slide-notes) but these are
+not that useful.
+
+## slide links
+```
+# Slide 1
+---
+name: secondslide
+
+# Slide 2
+---
+# Slide 3
+
+This is a link to the [second slide](#secondslide).
+```
+
+---
+template: normal
+
+## slide properties
+```
+# boring slide
+---
+class: center
+key: value
+
+# styled slide
+```
+
+- `name` for linking (see previous slide)
+
+- `class` apply CSS classes
+  - `left`, `center`, `right`, `top`, `middle`, `bottom` for alignment
+  - `inverse` for white font on dark background
+
+- `background-image: url(image.jpg)` (see [CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image))
+
+- `count: false` excludes the slide from slide counting
+- `template`
+  - `normal` self-explanatory
+  - `title` applies `inverse`, `center` and `middle`
+  - `leftmenu` see patches section
+
+---
+template: normal
+## content classes
+```
+This is .red[red text].
+```
+This wraps the content in `<span>` tags with the name (`red` in this case) as CSS
+class. Text blocks can be styled this way with `left` (default), `center` and
+`right`. Other options are:
+
+- `.red`
+- `.pull-left` and `.pull-right` for a 2-column layout
+- `.large`
+- `.footnote` (renders at the bottom of the slide)
+
+## syntax highlighting
+theoretically possible but not enabled at the moment
+
+---
+template: title
+## custom patches
+
+---
+template: leftmenu
+left: leftmenu
+
+### ← this menu here
+_(yes the name is bad but I didn't have a better idea at the time...)_
+
+To generate slides with this style set `template` to `leftmenu` and `left` to
+the text:
+```
+---
+template: leftmenu
+left: Cats
+This slide is about cats...
+```
+For a slide without a word in the menu set `left: *` and to reset the menu
+prefix the word with `_` like `left: _Cats`.
+
+---
+template: leftmenu
+left: imagelist
+
+One thing markdown doesn't handle is styling of images. But since this is
+required for a good presentation I wrote this patch.
+
+To have one or multiple images nicely aligned wrap them with the `.ilist[]`
+class:
+
+.ilist[
+  ![a very interesting picture](img/example1.jpg)
+  ![wow such wisdom](img/example2.jpg)
+  ![another example](img/example1.jpg)
+]
+
+```
+.ilist[
+  ![a very interesting picture] (img/example1.jpg)
+  ![wow such wisdom] (img/example2.jpg)
+  ![another example] (img/example1.jpg)
+]
+```
+(without the space between `]` and `(`; otherwise remark would render the
+images (which is really weird inside a code block))
+
+---
+template: leftmenu
+left: *
+
+If the images would get too big for the slide you can append a percentage of
+the normal size to one of the alt texts to scale them down.
+
+```
+.ilist[
+  ![this too big:80] (img/example1.jpg)
+  ![another example] (img/example1.jpg)
+]
+.ilist[
+  ![this also too big:80] (img/example2.jpg)
+]
+```
+
+.ilist[
+  ![this too big:40](img/example1.jpg)
+  ![another example](img/example1.jpg)
+]
+.ilist[
+  ![this also too big:40](img/example2.jpg)
+]
+
+---
+template: leftmenu
+left: arrows
+
+- all arrows like `-` `>` get replaced by arrows like `→` (I can't put them in
+  one code block because then they would get replaced.
+
+- (unordered) list items starting with such an arrow are also rendered nicely
+
+- -> like here
+  - or
+  - -> here
+
+```
+statement => conclusion
+- one
+- => two
+- three
+```
+(replace `=` with `-`)
+
+---
+template: leftmenu
+left: other changes
+
+- removed Google trackers and embedded Google-fonts locally instead of fetching
+  from Google servers every time
+
+- templates and CSS rules (see remarkjs section)
+
+- support for tables & quotes
+
+---
+template: normal
+# scripts
+
+## pdf export
+```
+decktape remark index.html index.pdf --chrome-arg=--disable-web-security
+```
+(I might put that into a shellscript as well...)
+
+## compiler script
+takes the content of a markdown document and wraps it with the HTML boilerplate
+
+```
+./remark/compile.sh index.remark
+```
+
+---
+template: title
+# That's it.
+
+        </textarea>
+        <script src="remark/remark.min.js"></script>
+        <script src="remark/scripts.js"></script>
+    </body>
+</html>

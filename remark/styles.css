@@ -1,0 +1,175 @@
+/* load all fonts from the fonts folder */
+@import url(fonts/fonts.css);
+
+/* general styling */
+body {
+  font-family: "Droid Serif";
+}
+h1,
+h2,
+h3 {
+  font-family: "Yanone Kaffeesatz";
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.remark-slide-content h1 {
+  font-size: 3em;
+}
+.remark-slide-content h2 {
+  font-size: 2em;
+}
+.remark-slide-content h3 {
+  font-size: 1.6em;
+}
+.remark-slide-scaler {
+  overflow: hidden;
+}
+
+li p {
+  line-height: 1.25em;
+}
+a {
+  color: rgb(249, 38, 114);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+/* title slides */
+.inverse {
+  background: #272822;
+  color: #777872;
+  text-shadow: 0 0 20px #333;
+}
+.inverse h1,
+.inverse h2 {
+  color: #f3f3f3;
+  line-height: 0.8em;
+}
+
+/* two-column layout for the leftmenu script*/
+.left-column {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+.left-column h2:last-of-type,
+.left-column h3:last-child {
+  color: #000;
+}
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}
+
+/* blockquotes */
+blockquote {
+  font-family: "Ubuntu Mono";
+  background: #272822;
+  color: #ddd;
+  padding: 0.5em;
+  border-radius: 5px;
+  margin-left: 0;
+  margin-right: 0;
+}
+blockquote p {
+  margin: 0;
+  overflow: hidden;
+}
+blockquote .author {
+  font-style: italic;
+  text-align: right;
+  float: right;
+}
+
+/* code blocks */
+.remark-code {
+    display: block;
+    font-family: "Ubuntu Mono";
+    background: #272822;
+    border-radius: 5px;
+    color: #ddd;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+.remark-inline-code {
+    font-family:"Ubuntu Mono";
+    background: #272822;
+    border-radius: 5px;
+    color: #ddd;
+    padding: .2em .3em;
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+/* tables */
+table {
+  width:100%;
+  border-spacing: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+th {
+  background: #272822;
+  color: #ddd;
+  border: 1px solid #272822;
+  padding: 5px;
+}
+td {
+  padding:5px;
+  border: 1px solid #272822;
+}
+tr:first-child th:first-child { border-top-left-radius: 5px; }
+tr:first-child th:last-child { border-top-right-radius: 5px; }
+tr:last-child td:first-child { border-bottom-left-radius: 5px; }
+tr:last-child td:last-child { border-bottom-right-radius: 5px; }
+/* fix help screen */
+.remark-help th, .remark-help td {
+    border: none
+}
+
+/* images */
+img {
+  border-radius: 5px;
+  max-width: 100%;
+}
+.ilist p {
+  font-size: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ilist p img {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.ilist p img:last-of-type {
+  margin-right: 0px;
+}
+.ilist p img:first-of-type {
+  margin-left: 0px;
+}
+
+/* additional classes */
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+.red {
+  color: #fa0000;
+}
+.large {
+  font-size: 2em;
+}
+.footnote {
+  position: absolute;
+  bottom: 3em;
+}

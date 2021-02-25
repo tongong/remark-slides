@@ -1,0 +1,31 @@
+diff --git a/src/remark/api.js b/src/remark/api.js
+index 583a93c..76f5e3a 100644
+--- a/src/remark/api.js
++++ b/src/remark/api.js
+@@ -72,6 +72,13 @@ function applyDefaults (dom, options) {
+     options.container = dom.getBodyElement();
+   }
+ 
++  // Add optional preprocessor option, to give a function to manipulate the slidedeck
++  if (!options.hasOwnProperty('preprocessor')) {
++    options.preprocessor = function(a) {
++      return a;
++    };
++  }
++
+   return options;
+ }
+ 
+diff --git a/src/remark/models/slideshow.js b/src/remark/models/slideshow.js
+index f4fb862..cc54397 100644
+--- a/src/remark/models/slideshow.js
++++ b/src/remark/models/slideshow.js
+@@ -185,6 +185,8 @@ function createSlides (slideshowSource, options) {
+   slides.byName = {};
+   slides.byNumber = {};
+ 
++  parsedSlides = (options.preprocessor || function(a){ return a; })(parsedSlides);
++
+   var slideNumber = 0;
+   parsedSlides.forEach(function (slide, i) {
+     var template, slideViewModel;
